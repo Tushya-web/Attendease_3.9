@@ -3,7 +3,6 @@ import csv
 import os
 from pyexpat.errors import messages
 import shutil
-import cv2
 from datetime import timedelta, date 
 from django.conf import settings
 from django.contrib import admin

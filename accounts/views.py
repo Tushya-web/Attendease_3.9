@@ -40,7 +40,7 @@ from datetime import datetime
 from .models import CustomUser, UserFace
 
 
-import base64, os, cv2, numpy as np
+import base64, os, numpy as np
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -376,6 +376,7 @@ def help_support(request):
 @login_required
 @csrf_exempt
 def face_add(request):
+    import cv2
     user = request.user
     user_face = UserFace.objects.filter(user=user).first()
     has_face = bool(user_face and user_face.face_image)

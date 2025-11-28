@@ -45,15 +45,9 @@
 #             return redirect("userdash")
 #     return JsonResponse({"status": "error", "message": "No image received."})
 
-# OPENROUTER_API_KEY = "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"  # Store in settings.py for safety
-
-# # GEMINI_API_KEY = "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"
-
-
 
 
 import os
-import cv2
 import pickle
 import numpy as np
 from datetime import datetime
@@ -76,6 +70,7 @@ EMBEDDINGS_FILE = os.path.join(settings.MEDIA_ROOT, "face_embeddings.pkl")
 # Add Face Image
 # -----------------------------
 def add_face_image(username, img):
+    import cv2
     """
     Saves user's face image and updates embeddings.
     img = OpenCV frame (BGR)
@@ -95,6 +90,7 @@ def add_face_image(username, img):
 # Recognize Face
 # -----------------------------
 def recognize_face(frame, threshold=0.45):
+    import cv2
     """
     Recognize face from frame using DeepFace.verify against stored images.
     Returns username if match found.
@@ -174,6 +170,7 @@ import base64
 import numpy as np
 
 def decode_base64_image(data_url):
+    import cv2
     """
     Converts base64 string from JS to OpenCV BGR image.
     """

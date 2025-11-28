@@ -1,5 +1,5 @@
 import os
-import cv2
+
 import numpy as np
 from datetime import datetime
 from django.conf import settings
@@ -18,6 +18,7 @@ TEMP_IMAGE = os.path.join(settings.MEDIA_ROOT, "temp.jpg")
 # Add Face Image
 # -----------------------------
 def add_face_image(username, img):
+    import cv2
     """
     Saves user's face image and updates embeddings.
     img = OpenCV frame (BGR)
@@ -47,12 +48,12 @@ def add_face_image(username, img):
 # Recognize Logged-in User Face Only
 # -----------------------------
 import os
-import cv2
 from deepface import DeepFace
 from django.conf import settings
 from .models import CustomUser
 
 def recognize_logged_in_user(frame, username, threshold=0.45):
+    import cv2
     """
     Recognize only the logged-in user's approved face images.
     Ignores pending/unapproved images.
@@ -116,6 +117,7 @@ def recognize_logged_in_user(frame, username, threshold=0.45):
 import base64
 
 def decode_base64_image(data_url):
+    import cv2
     """
     Converts base64 string from JS to OpenCV BGR image.
     """
