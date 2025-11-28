@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filters %}
 {% block title %}AttendEase | User Dashboard{% endblock %}
 {% block content %}
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <!-- Lucide Icon Library Script -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
@@ -554,12 +556,11 @@ nav .navigation ul li a:hover{
 
         /* --- 4 & 6. Calendar and Notifications Layout --- */
         .mid-section-grid {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template
-            -columns: 2.5fr 1fr;
-            gap: var(--spacing-medium);
-        }
+                    grid-column: 1 / -1;
+                    display: grid;
+                    grid-template-columns: 2.5fr 1fr;
+                    gap: var(--spacing-medium);
+                }
 
         /* --- 4. Calendar Section --- */
 :root {
@@ -661,12 +662,6 @@ nav .navigation ul li a:hover{
 .today { border: 2px solid var(--color-accent); }
 
 .empty { background-color: transparent; cursor: default; }
-
-/* Responsive */
-@media (max-width: 480px) {
-    .day-cell { padding: 8px 0; font-size: 0.85rem; min-height: 40px; }
-    .day-name { font-size: 0.8rem; padding: 5px 0; }
-}
 
         .day-name {
             font-weight: 500;
@@ -861,64 +856,285 @@ nav .navigation ul li a:hover{
           height: 20px;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .quick-actions-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .mid-section-grid {
-                grid-template-columns: 1fr;
-            }
-            .dashboard-container {
-                width: 98%;
-                max-width: 100%;
-                margin: 0;
-            }
+        
+   
+
+@media (max-width: 500px) {
+
+    /* -----------------------------------------
+       GLOBAL MOBILE IMPROVEMENTS
+    ----------------------------------------- */
+    body {
+        font-size: 15px  ;
+        line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.3rem  ;
+    }
+
+
+    /* -----------------------------------------
+       NAVBAR
+    ----------------------------------------- */
+    nav {
+        width: 100%;
+        height: 130px ;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .imgl {
+        width: 450px  ;
+        height: auto  ;
+    }
+
+    nav .navigation ul {
+        gap: 18px;
+    }
+
+    nav .navigation ul li a {
+        font-size: 42px  ;
+    }
+    nav .img44{
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Profile Dropdown */
+    .login_icon {
+        right: 88px;
+        width: 366px;
+        height: 200px;
+        padding: 10px;
+    }
+
+    .login_icon.show {
+        top: 140px  ;
+    }
+
+
+    /* -----------------------------------------
+       MAIN DASHBOARD CONTAINER
+    ----------------------------------------- */
+    .dashboard-container {
+        padding: 8px  ;
+        gap: 20px  ;
+    }
+
+
+    /* -----------------------------------------
+       WELCOME CARD
+    ----------------------------------------- */
+    .welcome-card {
+        margin-top: 33px;
+        padding: 25px  ;
+        height:800px;
+        text-align: center  ;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .welcome-info h1 {
+        font-size: 4.6rem  ;
+    }
+    .welcome-info p {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    }
+
+    #current-date {
+        font-size: 4rem  ;
+    }
+
+    .today-status {
+        padding: 10px 15px  ;
+        font-size: 4rem  ;
+    }
+
+
+    /* -----------------------------------------
+       SUMMARY CARDS
+    ----------------------------------------- */
+    .summary-row {
+        grid-template-columns: 1fr  ;
+        gap: 18px  ;
+    }
+
+    .summary-card {
+        padding: 31px;
+        text-align: center;
+        margin: 20px;
+        font-size: 1rem;
+        height: 274px;
+    }
+
+    .summary-card .label {
+        font-size: 4.1rem;
+        font-weight: 700;
+    }
+
+    .summary-card .value {
+        font-size: 5.2rem  ;
+    }
+
+
+    /* -----------------------------------------
+       QUICK ACTION CARDS
+    ----------------------------------------- */
+    .quick-actions-grid {
+        display: flex;
+        gap: 94px;
+        flex-direction: row;    
+        flex-wrap: wrap;
+        margin-top:36px;
+    }
+
+    .quick-action-card {
+        padding: 25px;
+        height: 278px;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .quick-action-icon {
+        width: 150px;
+        height: 180px;
+    }
+    
+.card:hover:not(.welcome-card):not(.calendar-card):not(.chart-card):not(.summary-card) {
+    transform: translateY(-3px);
+    
+    box-shadow: 0 20px 45px rgba(108, 92, 231, 0.3);
+    }
+
+
+
+    .quick-action-icon svg {
+            width: 73px;
+            stroke-width: -7px;
+            height: 129px;
         }
 
-        @media (max-width: 850px) {
-            .summary-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .welcome-card {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-                padding: var(--spacing-medium);
-            }
-            .welcome-info {
-                 z-index: 1; /* Keep text above the background illustration */
-            }
-            .today-status {
-                margin-top: var(--spacing-small);
-            }
-        }
 
-        @media (max-width: 500px) {
-            .summary-row {
-                grid-template-columns: 1fr;
-            }
-            .quick-actions-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-actions {
-                flex-direction: column;
-                gap: 10px;
-                padding: 0 var(--spacing-small) var(--spacing-medium);
-            }
-            .footer-button {
-                width: 100%;
-                justify-content: center;
-            }
-            .chart-card, .calendar-card {
-                padding: var(--spacing-medium);
-            }
-            .chart-bar-container {
-                width: 12%;
-            }
-        }
+    .quick-action-card p {
+        font-size: 3.1rem  ;
+        margin-top: 10px;
+        font-weight:600;
+    }
 
-        .video {
+
+    /* -----------------------------------------
+       CALENDAR
+    ----------------------------------------- */
+    .calendar-card {
+        margin-top: 47px;
+        height: max-content;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+       calendar-header h3 {
+    font-size: 55px;
+    font-weight: 700;
+    margin: 0;
+    }
+
+    .calendar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 104px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+   .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+   }
+
+    .day-name {
+        font-size: 2.85rem  ;
+        padding: 6px 0  ;
+    }
+
+    .day-cell {
+        width: 111px;
+        height: 85px;
+        font-size: 52px;
+    }
+
+
+    /* -----------------------------------------
+       CHART / ANALYTICS
+    ----------------------------------------- */
+    .chart-card {
+        margin-top:15px;
+        margin-bottom:10px;
+        padding: 20px  ;
+        min-height: 300px  ;
+    }
+
+    .chart-card h3 {
+        font-size:4.1rem;
+        text-align:center;
+}
+
+    .chart-placeholder {
+        height: 280px  ;
+    }
+
+    .chart-label {
+    font-size: 3.8rem;
+
+    }
+
+
+    /* -----------------------------------------
+       FOOTER BUTTONS
+    ----------------------------------------- */
+    .footer-actions {
+        flex-direction: column; text-align:center; width:100%; padding:10px 0;
+        margin:0; font-size:2.5rem; color:#555; font-weight:500
+    }
+
+    /* -----------------------------------------
+       VIDEO LOADER
+    ----------------------------------------- */
+    #load video {
+        width: 140px  ;
+        height: auto  ;
+    }
+
+    #load {
+        background: white;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE & LOGOUT BUTTONS
+    ----------------------------------------- */
+    .profile-btn,
+    .Btn {
+        width: 107px;
+        height: 99px;
+        border-radius: 50%;
+    }
+
+    .profile-btn:hover,
+    .Btn:hover {
+        width: 150px  ;
+    }
+
+}
+
+.video {
     background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
@@ -941,13 +1157,13 @@ nav .navigation ul li a:hover{
             <ul>   
                 <li><a class="active" href="{% url 'home' %}">Home</a></li>
                 {% comment %} <li><a href="#">About</a></li> {% endcomment %}
-                <li><a href="#">Attendance</a></li>
+                {% comment %} <li><a href="#">Attendance</a></li> {% endcomment %}
                 {% comment %} <li><a href="{% url 'admin:index' %}">Administrator</a></li>
                 <li><a href="{% url 'register' %}">Sign Up</a></li>{% endcomment %}
                 <li>
               <a class="playstore-button" href="#">
               <span class="img-wrapper">
-              <img src="{% static 'icons8-profile-48.png' %}" alt="profile" width="30" height="30">
+              <img class="img44" src="{% static 'icons8-profile-48.png' %}" alt="profile" width="30" height="30">
               </span>
               
               <span class="text-2">{{user.username}}</span>
@@ -989,40 +1205,42 @@ nav .navigation ul li a:hover{
                 <p id="current-date"></p>
                 <h1>Welcome, {{user.username}}!</h1>
                 <p>Stay updated with your attendance status.</p>
-                <div class="today-status">➡️ Checked-in at 9:05 AM</div>
-                <div class="today-status">⬅️ Checked-out at 9:05 AM</div>
+                <div class="today-status">{{ today_status }}</div>
             </div>
         </div>
 
         <!-- 3. Attendance Summary Cards (Statistics Row) -->
-        <div class="summary-row">
-            <div class="card summary-card">
-                <div class="value">20/22</div>
-                <div class="label">Total Days Present</div>
-            </div>
-            <div class="card summary-card">
-                <div class="value">2</div>
-                <div class="label">Total Absences</div>
-            </div>
-            <div class="card summary-card">
-                <div class="value">3</div>
-                <div class="label">Late Arrivals</div>
-            </div>
-            <div class="card summary-card">
-                <div class="label">Overall Attendance %</div>
-                <div class="overall-percent-content">
-                    <div class="value">90.9%</div>
-                    <div class="progress-circle-container">
-                        <div class="percentage">91%</div>
-                        <svg width="70" height="70" viewBox="0 0 70 70">
-                            <circle cx="35" cy="35" r="32" class="progress-bg"></circle>
-                            <!-- stroke-dashoffset: 18.09 is for 91% -->
-                            <circle cx="35" cy="35" r="32" class="progress-bar"></circle>
-                        </svg>
-                    </div>
-                </div>
+        <!-- 3. Attendance Summary Cards -->
+<div class="summary-row">
+    <div class="card summary-card">
+        <div class="label">Total Days Present</div>
+        <div class="value">{{ present_days }}/{{ total_days }}</div>
+    </div>
+
+    <div class="card summary-card">
+        <div class="label">Total Absences</div>
+        <div class="value">{{ absent_days }}</div>
+    </div>
+
+    <div class="card summary-card">
+        <div class="label">Total Leaves</div>
+        <div class="value">{{ leave_days }}</div>
+    </div>
+
+    <div class="card summary-card">
+        <div class="label">Overall Attendance %</div>
+        <div class="overall-percent-content">
+            <div class="value">{{ percentage }}%</div>
+            <div class="progress-circle-container">
+                <div class="percentage">{{ percentage }}%</div>
+                <svg width="70" height="70" viewBox="0 0 70 70">
+                    <circle cx="35" cy="35" r="32" class="progress-bg"></circle>
+                   <circle cx="35" cy="35" r="32" class="progress-bar" data-percentage="{{ percentage }}"></circle>
+                </svg>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- 2. Quick Action Cards (Main Grid) -->
         <div class="quick-actions-grid">
@@ -1031,7 +1249,7 @@ nav .navigation ul li a:hover{
                 <div class="quick-action-icon"><i data-lucide="user-plus"></i></div>
                 <p>Add Face</p>
             </div>
-            <div class="card quick-action-card" onclick="window.location.href='{% url 'face_scan' %}'">
+            <div id="mark" class="card quick-action-card" onclick="window.location.href='{% url 'face_scan' %}'">
                 <!-- Icon: ScanFace (📸) -->
                 <div class="quick-action-icon"><i data-lucide="scan-face"></i></div>
                 <p>Take Attendance</p>
@@ -1051,20 +1269,20 @@ nav .navigation ul li a:hover{
                 <div class="quick-action-icon"><i data-lucide="calendar-plus"></i></div>
                 <p>Leave Request</p>
             </div>
-            <div class="card quick-action-card">
-                <!-- Icon: Clock (⏰) -->
-                <div class="quick-action-icon"><i data-lucide="clock"></i></div>
-                <p>Check In / Check Out</p>
+            <div class="card quick-action-card" onclick="window.location.href='{%url 'contact_admin'%}'">
+                <!-- Icon: Mail -->
+                <div class="quick-action-icon"><i data-lucide="mail"></i></div>
+                <p> Contact Admin</p>
             </div>
             <div class="card quick-action-card" onclick="window.location.href='{% url 'userprofile' %}'">
                 <!-- Icon: UserPen (📝) -->
                 <div class="quick-action-icon"><i data-lucide="user-pen"></i></div>
                 <p>Profile Update</p>
             </div>
-            <div class="card quick-action-card">
-                <!-- Icon: Bell (🔔) -->
-                <div class="quick-action-icon"><i data-lucide="bell"></i></div>
-                <p>Notifications</p>
+            <div class="card quick-action-card" onclick="window.location.href='{% url 'help_support'%}'" >
+                <!-- Icon: Help -->
+                <div class="quick-action-icon" ><i data-lucide="help-circle"></i></div>
+                <p>Help & Support</p>
             </div>
         </div>
 
@@ -1084,77 +1302,31 @@ nav .navigation ul li a:hover{
     </div>
 </div>
 
-    <!-- 6. Notifications Card -->
-    <div class="card notification-card">
-        <h3>Notifications & Notices</h3>
-        <div class="notification-list">
-            <div class="notification-item">
-                <!-- Icon: AlertTriangle (⚠️) -->
-                <span class="notification-icon late"><i data-lucide="alert-triangle"></i></span>
-                <span>You were **late** on Sept 13 (Checked in at 9:20 AM).</span>
-            </div>
-            <div class="notification-item">
-                <!-- Icon: CheckCircle (✅) -->
-                <span class="notification-icon approved"><i data-lucide="check-circle"></i></span>
-                <span>**Leave approved** for Sept 20 (Personal).</span>
-            </div>
-            <div class="notification-item">
-                <!-- Icon: UserCheck (👤) -->
-                <span class="notification-icon success"><i data-lucide="user-check"></i></span>
-                <span>New face enrolled successfully. Welcome aboard!</span>
-            </div>
-        </div>
-        <div class="see-more">See More (5 total unread)</div>
-    </div>
 
+<div class="card chart-card">
+  <h3>Weekly Check-in Time Trends</h3>
+  <div class="chart-placeholder">
+    {% for day, hour, label in weekly_chart %}
+      <div class="chart-bar-container">
+        <div class="chart-bar" style="height: {{ hour|floatformat:0 }}%;"></div>
+        <div class="chart-label">{{ day }}<br><small>{{ label }}</small></div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
-
-        <!-- 5. Analytics / Charts Section (Bottom) -->
-        <div class="card chart-card">
-            <h3>Weekly Check-in Time Trends</h3>
-            <div class="chart-placeholder">
-                <!-- Using a simple JS logic to apply initial heights on load -->
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-75" data-height="75"></div>
-                    <div class="chart-label">Mon</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-50" data-height="50"></div>
-                    <div class="chart-label">Tue</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-90" data-height="90"></div>
-                    <div class="chart-label">Wed</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-65" data-height="65"></div>
-                    <div class="chart-label">Thu</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-80" data-height="80"></div>
-                    <div class="chart-label">Fri</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-40" data-height="40"></div>
-                    <div class="chart-label">Sat</div>
-                </div>
-                <div class="chart-bar-container">
-                    <div class="chart-bar bar-height-70" data-height="70"></div>
-                    <div class="chart-label">Sun</div>
-                </div>
-            </div>
-        </div>
-
         <!-- 7. Footer Quick Actions (Bottom Row) -->
-        <div class="footer-actions">
-            <!-- Icon: Download (⬇️) -->
-            <a href="#" class="footer-button"><span><i data-lucide="download"></i></span> Download Report</a>
-            <!-- Icon: Mail (📧) -->
-            <a href="#" class="footer-button"><span><i data-lucide="mail"></i></span> Contact Admin</a>
-            <!-- Icon: HelpCircle (ℹ️) -->
-            <a href="#" class="footer-button" onclick="window.location.href='{% url 'help_support'%}'"><span><i data-lucide="help-circle"></i></span> Help & Support</a>
-        </div>
+    <div class="footer-actions">
+    
+    <p>
+        © 2025 AttendEase — All Rights Reserved
+    </p>
+
+    <p >    
+        Powered by <strong>OpenCV</strong>, <strong>DeepFace</strong> and <strong>AI-driven Face Recognition</strong>
+    </p>
+
+</div>
 
 <div id="load" class="video">
 
@@ -1226,7 +1398,55 @@ function getMonthName(month) {
     const names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     return names[month-1];
 }
+
+{% comment %} document.addEventListener("DOMContentLoaded", function() {
+
+    const attendanceCard = document.querySelector('[onclick*="face_scan"]');
+    const now = new Date();
+    const hours = now.getHours();
+
+    // Allow only 7–8 AM or 13–14 (1–2 PM)
+    if (!((hours >= 7 && hours < 8) || (hours >= 13 && hours < 14))) {
+        attendanceCard.classList.add("disabled");
+        attendanceCard.removeAttribute("onclick");
+        attendanceCard.querySelector("p").innerText = "Attendance Disabled";
+    }
+}); {% endcomment %}
+
   </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Animate circular progress bar
+  const circle = document.querySelector(".progress-bar");
+  const percentage = parseFloat(circle.dataset.percentage) || 0;
+
+  // total circumference = 2πr = 2 * π * 32 ≈ 201
+  const circumference = 201;
+  const offset = circumference - (percentage / 100) * circumference;
+
+  circle.style.strokeDasharray = circumference;
+  circle.style.strokeDashoffset = circumference;
+  
+  // Animate fill smoothly
+  setTimeout(() => {
+    circle.style.transition = "stroke-dashoffset 1s ease-out";
+    circle.style.strokeDashoffset = offset;
+  }, 300);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".chart-bar").forEach(bar => {
+    const height = bar.style.height;
+    bar.style.height = "0%";
+    setTimeout(() => {
+      bar.style.transition = "height 1s ease-out";
+      bar.style.height = height;
+    }, 200);
+  });
+});
+</script>
+
 
 
 {% endblock %}

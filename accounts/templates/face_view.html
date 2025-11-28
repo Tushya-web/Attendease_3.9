@@ -78,7 +78,7 @@
 <body>
 <div style="max-width: 1200px; margin: 2rem auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
 
-    <!-- ✅ Registered / Approved Face -->
+    
     <div class="face-card">
         <h2 style="color: #6C5CE7;">Registered Face</h2>
         {% if old_face %}
@@ -88,24 +88,23 @@
         {% endif %}
     </div>
 
-    <!-- ⏳ Pending Face -->
     {% if pending_face %}
     <div class="face-card">
         <h2 style="color: orange;">Pending Face</h2>
         <img src="{{ pending_face }}" alt="Pending Face" style="border: 2px solid orange; margin-top: 1rem;">
         <p style="text-align:center; font-weight:bold; margin-top:0.5rem; color: orange;">
-            ⏳ Pending Admin Approval
+            Pending Admin Approval
         </p>
     </div>
     {% endif %}
 
-    <!-- ❌ Rejected Face -->
+    <!--   Rejected Face -->
     {% if rejected_face and not pending_face %}
     <div class="face-card">
         <h2 style="color: #D32F2F;">Rejected Face</h2>
         <img src="{{ rejected_face }}" alt="Rejected Face" style="border: 2px solid #D32F2F; margin-top: 1rem;">
         <p style="text-align:center; font-weight:bold; margin-top:0.5rem; color: #D32F2F;">
-            ❌ Your last face update was rejected.
+              Your last face update was rejected.
         </p>
     </div>
     {% endif %}

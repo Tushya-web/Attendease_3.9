@@ -81,7 +81,7 @@ def recognize_logged_in_user(frame, username, threshold=0.45):
             result = DeepFace.verify(
                 temp_image,
                 db_img_path,
-                model_name="Facenet",
+                model_name="SFace",
                 detector_backend="mtcnn",
                 enforce_detection=True
             )

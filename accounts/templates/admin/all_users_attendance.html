@@ -1,5 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 <div class="header-section">
@@ -10,6 +11,26 @@
     All Users Attendance
   </h1>
 </div>
+
+<div class="select-wrapper">
+  <select name="month" class="filter-select">
+    {% for m in 1|get_range:12 %}
+      <option value="{{ m }}" {% if m == selected_month %}selected{% endif %}>
+        {{ m|date:"F" }}
+      </option>
+    {% endfor %}
+    </select>
+</div>
+
+<div class="select-wrapper">
+  <select name="year" class="filter-select">
+    {% for y in 2023|get_range:2026 %}
+      <option>ption value="{{ y }}" {% if y == selected_year %}selected{% endif %}>{{ y }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
 
 <div class="filter-section">
   <form method="get" class="filter-form">
@@ -35,7 +56,16 @@
         <span class="icon options-icon"></span>
     </div>
     <div class="card-content-wrapper">
-        <img src="{{ u.user.profile_photo.url|default:'/static/default_profile.png' }}" alt="{{ u.user.username }}" class="profile-img">
+      <img 
+        src="{% if u.user.userface.face_image %}
+                {{ u.user.userface.face_image.url }}
+              {% elif u.user.username %}
+                /media/faces/{{ u.user.username }}/{{ u.user.username }}_default.jpg
+              {% else %}
+                /static/default_profile.png
+              {% endif %}"
+        alt="{{ u.user.username }}"
+        class="profile-img">
         <h3 class="username">{{ u.user.username }}</h3>
         <span class="user-info-tag">{{ u.attendance_percentage }}% Attendance</span>
         <p class="contact-info text-secondary">Present: {{ u.present_days }}</p>
@@ -47,8 +77,16 @@
     <div class="modal-content modern-modal-content">
       <span class="close modern-close" onclick="closeModal('{{ u.user.id }}')">&times;</span>
       <div class="modal-user-info">
-        <img src="{{ u.user.profile_photo.url|default:'/static/default_profile.png' }}" class="modal-img" alt="{{ u.user.username }}">
-        <div class="modal-info-details">
+       <img 
+  src="{% if u.user.userface.face_image %}
+          {{ u.user.userface.face_image.url }}
+        {% elif u.user.username %}
+          /media/faces/{{ u.user.username }}/{{ u.user.username }}_default.jpg
+        {% else %}
+          /static/default_profile.png
+        {% endif %}"
+  class="modal-img"
+  alt="{{ u.user.username }}">        <div class="modal-info-details">
           <h2 class="modal-username">{{ u.user.username }}</h2>
           <p class="text-secondary"><strong>Email:</strong> {{ u.user.email }}</p>
           <p class="text-secondary"><strong>Enrollment:</strong> {{ u.user.enrollment_no }}</p>
@@ -63,14 +101,19 @@
       <h3 class="modal-section-title">Attendance Summary</h3>
       <p class="modal-attendance-summary">Present: <span class="text-success">{{ u.present_days }}</span> | Absent: <span class="text-danger">{{ u.absent_days }}</span> | Percentage: <span class="text-primary">{{ u.attendance_percentage }}%</span></p>
 
-      <div class="modal-buttons">
-        <a href="?export=attendance&user={{ u.user.id }}" class="btn download-btn primary-download-btn">
-          Download Attendance CSV
-        </a>
-        <a href="?export=leave&user={{ u.user.id }}" class="btn download-btn secondary-download-btn">
-          Download Leave CSV
-        </a>
-      </div>
+<div class="modal-buttons">
+  <a href="?export=attendance&user={{ u.user.id }}" class="btn download-btn primary-download-btn">
+    Attendance CSV
+  </a>
+  <a href="?export=leave&user={{ u.user.id }}" class="btn download-btn secondary-download-btn">
+    Leave CSV
+  </a>
+  <a href="?export=monthly&user={{ u.user.id }}&month={{ selected_month }}&year={{ selected_year }}" 
+     class="btn download-btn"
+     style="background: linear-gradient(90deg, #9b59b6, #6a1b9a);">
+    Monthly Summary CSV
+  </a>
+</div>
 
       <h3 class="modal-section-title">Attendance History</h3>
       <table class="table modern-table">
@@ -85,6 +128,13 @@
           {% endfor %}
         </tbody>
       </table>
+
+      <h3 class="modal-section-title">Attendance Summary</h3>
+<p class="modal-attendance-summary">
+  Present: <span class="text-success">{{ u.present_days }}</span> | 
+  Absent: <span class="text-danger">{{ u.absent_days }}</span> | 
+  Percentage: <span class="text-primary">{{ u.attendance_percentage }}%</span>
+</p>
 
       <h3 class="modal-section-title">Leave History</h3>
       <table class="table modern-table">

@@ -116,7 +116,7 @@ def recognize_face(frame, threshold=0.45):
                 result = DeepFace.verify(
                     TEMP_IMAGE,
                     db_img_path,
-                    model_name="Facenet",
+                    model_name="SFace",
                     detector_backend="mtcnn",  # more reliable than opencv
                     enforce_detection=True
                 )

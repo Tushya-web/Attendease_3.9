@@ -1,12 +1,14 @@
-# import os
+import os
+import requests
 
-# # Force DeepFace to use your media/deepface_models folder
-# custom_deepface_folder = os.path.join(os.path.dirname(__file__), "media", "deepface_models")
-# os.environ["DEEPFACE_HOME"] = custom_deepface_folder
-# os.makedirs(custom_deepface_folder, exist_ok=True)
+MODEL_PATH = "media/deepface_models/.deepface/weights/face_recognition_sface_2021dec.onnx"
+URL = "https://github.com/deepinsight/insightface/releases/download/v2.0.0/sface.onnx"
 
-# from deepface import DeepFace  # <-- import AFTER setting DEEPFACE_HOME
-
-# print("Downloading Facenet model...")
-# DeepFace.build_model("Facenet")
-# print("✅ Facenet model downloaded to:", custom_deepface_folder)
+def download_sface():
+    if not os.path.exists(MODEL_PATH):
+        print("Downloading SFace model...")
+        response = requests.get(URL)
+        os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+        with open(MODEL_PATH, "wb") as f:
+            f.write(response.content)
+        print("Download complete!")

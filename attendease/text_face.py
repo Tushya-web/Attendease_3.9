@@ -12,7 +12,7 @@ def verify_faces(request):
         if not os.path.exists(img1) or not os.path.exists(img2):
             return JsonResponse({"status": "error", "message": "Sample images not found in MEDIA_ROOT/faces/FCA@123/ and MEDIA_ROOT/rk/rk_1.jpg/"})
 
-        result = DeepFace.verify(img1, img2, model_name="Facenet", detector_backend="opencv")
+        result = DeepFace.verify(img1, img2, model_name="SFace", detector_backend="opencv")
         return JsonResponse({
             "status": "success",
             "verified": result["verified"],

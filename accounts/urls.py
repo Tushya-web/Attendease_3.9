@@ -29,15 +29,17 @@ urlpatterns = [
     path('face_view/', views.face_view , name='face_view'),
     path('leaverequest/', views.leave_request_view , name='leave_request'), 
        
-    path('attendance_report' , views.attendance_report , name='attendance_report'),
+    path('attendance_report/', views.attendance_report, name='attendance_report'),
+    path('download/', views.download_attendance_csv, name='download_attendance_csv'),
+    path('download_monthly_attendance_csv/', views.download_monthly_attendance_csv, name='download_monthly_attendance_csv'),
     # path("attendancemark/", views.mark_attendance_ajax, name="mark_attendance"),
     # path("attendance/my/", views.my_attendance, name="my_attendance"),
     # path("attendance/all/", views.all_attendance, name="all_attendance"),
     
     path("report/", views.attendance_report, name="attendance_report"),
-    path("download/", views.download_attendance_csv, name="download_attendance_csv"),
     
     path('help_support/', views.help_support, name='help_support'),
+    path('contact_admin/', views.contact_admin, name='contact_admin'),
     
     path("chatbot/", views.chatbot_view, name="chatbot"),
     path("chatbot/api/", views.chatbot_api, name="chatbot_api"),

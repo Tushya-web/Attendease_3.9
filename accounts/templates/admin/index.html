@@ -1,15 +1,19 @@
-{% extends "admin/base_site.html" %}
-{% load static %}
+{% extends "admin/base.html" %}
+{% load i18n static admin_urls admin_list %}
 
-{% block title %}AttendEase Admin{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  &rsaquo; Dashboard
+</div>
 
-{% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">AttendEase Admin</a></h1>
 {% endblock %}
+
 
 {% block content %}
 <div id="dashboard-container" class="dashboard-container">
-  <h2 class="dashboard-title">📊 AttendEase Overview</h2>
+  <h2 class="dashboard-title">Overview AttendEase</h2>
+
 
   <!-- Summary Cards -->
   <div class="metrics">
@@ -30,7 +34,7 @@
   <!-- Top Users -->
   <div class="charts">
     <div class="chart-card">
-      <h4>🏆 Top 3 Students</h4>
+      <h4> Top 3 Students</h4>
       <ul class="top-list">
         {% for s in top_students %}
         <li>
@@ -44,7 +48,7 @@
         {% endfor %}
       </ul>
 
-      <h4>👩‍🏫 Top 3 Faculty</h4>
+      <h4> Top 3 Faculty</h4>
       <ul class="top-list">
         {% for f in top_faculty %}
         <li>
@@ -61,14 +65,22 @@
 
     <!-- Monthly Attendance Chart -->
     <div class="chart-card">
-      <h4>📈 Monthly Attendance Trend</h4>
+      <h4> Monthly Attendance Trend</h4>
       <canvas id="monthlyChart"></canvas>
     </div>
   </div>
+<br>
+  <center>
+    <div class="metric-card ">
+  <h3> Master Data Management</h3>
+  <p>Upload or update user data easily.</p>
+  <a href="{% url 'admin:upload_master_data' %}" class="btn purple">Go to Upload</a>
+</div>
+</center>
 
   <!-- Low Attendance Users -->
   <div class="graph-box">
-    <h3>⚠ Low Attendance (<75%)</h3>
+    <h3> Low Attendance (<75%)</h3>
     <table class="dashboard-table">
       <thead>
         <tr>

@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AttendEase</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'logobluenobg.ico' %}">
     <link href="https://api.fontshare.com/v2/css?f[]=alpino@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
 
-    .video {
+.video {
     background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
@@ -668,7 +669,7 @@
     <div class="feature-card">
       <div class="icon-circle"><i data-lucide="scan-face"></i></div>
       <h3>DeepFace Recognition</h3>
-      <p>Leverages DeepFace’s ensemble models (VGG-Face, Facenet, ArcFace, and more) for ultra-accurate, real-time identity verification.</p>
+      <p>Leverages DeepFace’s ensemble models (VGG-Face, SFace, ArcFace, and more) for ultra-accurate, real-time identity verification.</p>
       <ul>
         <li><i data-lucide="check-circle"></i>99.9% recognition accuracy across lighting conditions.</li>
         <li><i data-lucide="check-circle"></i>Auto-alignment and preprocessing for face normalization.</li>
@@ -730,7 +731,8 @@
                 <p>Automatic, seamless attendance tracking using modern technology to eliminate manual errors and save valuable time daily.</p>
                 <ul>
                     <li><i data-lucide="check-circle"></i>Zero-touch check-in/out.</li>
-                    <li><i data-lucide="check-circle"></i>Geofencing support for precision.</li>
+                    <i data-lucide="check-circle"></i>Easy To Use.</li>
+                    {% comment %} <li><i data-lucide="check-circle"></i>Geofencing support will .</li> {% endcomment %}
                 </ul>
                 {% comment %} <button>Learn More</button> {% endcomment %}
             </div>
@@ -754,7 +756,7 @@
                 <p>Gain instant insights into employee presence, punctuality, and overall workforce productivity with live dashboards.</p>
                 <ul>
                     <li><i data-lucide="check-circle"></i>Customizable report generation.</li>
-                    <li><i data-lucide="check-circle"></i>Export data in various formats.</li>
+                    <li><i data-lucide="check-circle"></i>Export data in various Excel formats.</li>
                 </ul>
                 {% comment %} <button>See Reports</button> {% endcomment %}
             </div>
@@ -840,7 +842,7 @@
             <div class="testimonial-cards">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"AttendEase has transformed how we manage attendance. It's fast, incredibly accurate, and the setup was seamless. A massive time-saver for our HR team!"</p>
-                    <h4 class="testimonial-name">— John Doe, HR Manager</h4>
+                    <h4 class="testimonial-name">— Renuka P Patel, Faculty of AMPICS</h4>
                 </div>
                 <div class="testimonial-card">
                     <p class="testimonial-text">"No more manual check-ins or long queues. Our students love the face scan feature—it's quick and reliable. It’s truly smart attendance!"</p>
@@ -864,25 +866,25 @@
                 <div class="faq-item">
                     <button class="faq-question" data-toggle="answer-1">Is face recognition safe to use?</button>
                     <div class="faq-answer" id="answer-1">
-                        <p>Yes, security is our top priority. AttendEase uses encrypted AI algorithms (like Haar Cascade) and all biometric data is handled securely and in compliance with modern privacy standards. Data is never stored publicly.</p>
+                        <p>Yes, security is our top priority. AttendEase uses encrypted AI algorithms (SFace) and all biometric data is handled securely and in compliance with modern privacy standards. Data is never stored publicly.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" data-toggle="answer-2">Can multiple users scan at the same time?</button>
                     <div class="faq-answer" id="answer-2">
-                        <p>The system is optimized for speed and can handle rapid sequential scans, making it efficient for high-traffic environments like classroom entrances and office lobbies. Batch processing is supported.</p>
+                        <p>The system is optimized for speed and can handle rapid sequential scans, making it efficient for high-traffic environments like School/Collage entrances and office lobbies. Batch processing is supported.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" data-toggle="answer-3">Does it work offline?</button>
                     <div class="faq-answer" id="answer-3">
-                        <p>Yes, AttendEase features an offline mode. Attendance data is securely cached locally during an internet outage and automatically syncs to the central database once the connection is restored, ensuring zero data loss.</p>
+                        <p>No, AttendEase currently does not have an offline mode. Attendance data is securely cached locally due to an internet connection being required and automatically syncs to the central database once the connection is restored.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" data-toggle="answer-4">How accurate is the AI verification?</button>
                     <div class="faq-answer" id="answer-4">
-                        <p>Our core verification model achieves a high degree of accuracy, typically over 99.9%, drastically reducing the risk of 'buddy punching' and ensuring highly reliable attendance records.</p>
+                        <p>Our core verification model achieves a high degree of accuracy, typically over 99.9%, As we are using the Deepface Library for face recognition, we have a high degree of accuracy in verifying the identity of the person in the image.</p>
                     </div>
                 </div>
             </div>
@@ -974,8 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch("{% url 'chatbot_api' %}", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": getCSRFToken()
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ question })
             });
@@ -1020,13 +1021,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-
-        // ================= SCROLL ANIMATION (Visibility Check) =================
         const scrollElements = document.querySelectorAll('.blur-animation');
 
         const elementInView = (el, offset = 0) => {
             const elementTop = el.getBoundingClientRect().top;
-            // Check if element top is less than the viewport height minus an offset (e.g., 150px)
             return elementTop <= (window.innerHeight - offset);
         };
 
@@ -1036,7 +1034,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const handleScrollAnimation = () => {
             scrollElements.forEach(el => {
-                // Trigger the animation when the element is 150px into view
                 if (elementInView(el, 150)) {
                     displayScrollElement(el);
                 }

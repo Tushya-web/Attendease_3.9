@@ -1,19 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings  
+from django.contrib.auth import get_user_model
+
 
 # Create your models here.
 
 class CustomUser(AbstractUser):
     enrollment_no = models.CharField(max_length=11 , null=True , unique=True , blank=True)
-    # institute_email = models.EmailField(unique=True)
     user_type = models.CharField(
         max_length=10,
         choices=(("student", "Student") , ("faculty", "Faculty")),
         default="student"
     )
     is_approved = models.BooleanField(default=False)  #For check wheather the user is approved or not
-    has_face_data = models.BooleanField(default=False)  
+    has_face_data = models.BooleanField(default=False)
 
 class PendingFaceUpdate(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -68,6 +69,42 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.date} ({self.status})"
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        from .utils import update_monthly_attendance
+        update_monthly_attendance(self.user, self.date)
+    
+from django.db import models
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+class MonthlyAttendance(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    month = models.IntegerField()
+    year = models.IntegerField()
+    total_days = models.IntegerField(default=0)
+    present_days = models.IntegerField(default=0)
+    absent_days = models.IntegerField(default=0)
+    leave_days = models.IntegerField(default=0)
+    holidays = models.IntegerField(default=0)
+    percentage = models.FloatField(default=0.0)
+
+    def calculate_percentage(self):
+        """Recalculate attendance percentage and save."""
+        # Count present + leave + holiday as attended (optional)
+        attended = self.present_days + self.leave_days + self.holidays
+
+        if self.total_days > 0:
+            self.percentage = round((attended / self.total_days) * 100, 2)
+        else:
+            self.percentage = 0.0
+
+        #   Save explicitly
+        super(MonthlyAttendance, self).save()
+
+    def __str__(self):
+        return f"{self.user.username} - {self.month}/{self.year}"
 
 
 class LeaveRequest(models.Model):
@@ -97,3 +134,23 @@ class UserFace(models.Model):
 
     def __str__(self):
         return f"{self.user.username} Face"
+    
+class MasterUserRecord(models.Model):
+    username = models.CharField(max_length=150)
+    enrollment_no = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
+    user_type = models.CharField(max_length=20, choices=[("student", "Student"), ("faculty", "Faculty")])
+    face_image = models.ImageField(upload_to="faces/master_faces/", blank=True, null=True)
+    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.username} ({self.enrollment_no})"
+    
+class MasterUpload(models.Model):
+    file = models.FileField(upload_to="uploads/master_data/")
+    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    total_rows = models.IntegerField(default=0)
+    created_rows = models.IntegerField(default=0)
+    updated_rows = models.IntegerField(default=0)

@@ -10,7 +10,7 @@ if os.environ.get('RENDER'):
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['attendease-rl90.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.6']
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '97665b4de43d2bab61ba698612f18347')
 
@@ -141,14 +141,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-JAZZMIN_UI_TWEAKS = {
-    "theme": "flatly",
-    "dark_mode_theme": "darkly",
-    "navbar": "navbar-dark bg-gradient-primary",
-    "sidebar": "sidebar-dark-primary",
-    "accent": "accent-purple",
-    "button_classes": {"primary": "btn-primary bg-gradient-purple"},
-}
+# JAZZMIN_UI_TWEAKS = {
+#     "theme": "flatly",
+#     "dark_mode_theme": "darkly",
+#     "navbar": "navbar-dark bg-gradient-primary",
+#     "sidebar": "sidebar-dark-primary",
+#     "accent": "accent-purple",
+#     "button_classes": {"primary": "btn-primary bg-gradient-purple"},
+# }
 
 JAZZMIN_SETTINGS = {
     "site_title": "AttendEase Admin",
@@ -158,10 +158,10 @@ JAZZMIN_SETTINGS = {
     "site_logo": "logo.jpg",  # path in static/images/
     "copyright": "© 2025 AttendEase",
     "show_ui_builder": False,
+    "site_url": "/",
 
     "topmenu_links": [
         {"name": "Home", "url": "/admin", "new_window": False},
-
         {"name": "Users", "url": "/admin/accounts/customuser/", "new_window": False},
         {"name": "Attendease", "url": "/admin/accounts/attendance/", "new_window": False},
         {"name": "Face Manage", "url": "/admin/accounts/facechangerequest/", "new_window": False},
@@ -169,12 +169,13 @@ JAZZMIN_SETTINGS = {
         {"name": "User Faces", "url": "/admin/accounts/userface", "new_window": False},
         {"name": "AttendEase Index Page", "url": "/", "new_window": True},
     ],
-
+    
     "icons": {
         "accounts.Attendance": "fas fa-calendar-check",
         "accounts.FaceChangeRequest": "fas fa-user-edit",
         "accounts.LeaveRequest": "fas fa-plane-departure",
-        "accounts.userface": "fas fa-id-card",
+        "accounts.MasterUserRecords": "fas fa-database",
+        "accounts.UserFace": "fas fa-id-card",
         "accounts.CustomUser": "fas fa-users",
         "auth.Group": "fas fa-users-cog",
     },

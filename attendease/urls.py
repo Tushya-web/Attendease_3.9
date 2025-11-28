@@ -8,7 +8,7 @@ from accounts.admin import custom_admin_site
 
 urlpatterns = [
     path('admin/', custom_admin_site.urls),
-    # path("test_facenet/", verify_faces , name="test_facenet"),
+    # path("test_SFace/", verify_faces , name="test_SFace"),
     path('', include('accounts.urls')),
     path('accounts/', include('accounts.urls')),
 ]
