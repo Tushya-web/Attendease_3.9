@@ -1,1 +1,1 @@
-gunicorn attendease.wsgi
+web: gunicorn attendease.wsgi:application
