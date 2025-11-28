@@ -547,9 +547,8 @@ def face_add(request):
 #         "has_face": has_face,
 #     })
 
-OPENROUTER_API_KEY = "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"  # Store in settings.py for safety
+# Store in settings.py for safety
 
-# GEMINI_API_KEY = "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"
 
 # Render the chat page
 def chatbot_view(request):
@@ -667,7 +666,7 @@ import google.generativeai as genai
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-GEMINI_API_KEY = "AIzaSyBHPwBWtgaOz0EJOQMJnh2P27k4068wo_4"
+GEMINI_API_KEY = ""
 genai.configure(api_key=GEMINI_API_KEY)
 
 @csrf_exempt
