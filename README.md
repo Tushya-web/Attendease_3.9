@@ -6,7 +6,7 @@ It features secure face verification, user registration, attendance tracking, le
 
 https://github.com/user-attachments/assets/03b4130c-6bcc-4957-811b-0bff7711e6cb
 
-> [!Project Highlights] 
+> [!NOTE] 
 
 > Django-based Web Application
 
@@ -149,6 +149,7 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
