@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/03b4130c-6bcc-4957-811b-0bff7711e6cb
 
 ## Project Information
 
-Django-based Web Application
+_Django-based Web Application
 
 Face Recognition using DeepFace (FaceNet backend)
 
@@ -22,21 +22,21 @@ Daily Attendance, Time-based Attendance (IN/OUT)
 
 Export Attendance as CSV/Excel
 
-Responsive UI (HTML, CSS, JS)
+Responsive UI (HTML, CSS, JS)_
 
 ## AI + Face Verification
 
-DeepFace with FaceNet model
+_DeepFace with FaceNet model
 
 Real-time webcam recognition
 
 Liveness detection (anti-spoofing)
 
-Face must match the master/default face uploaded by admin
+Face must match the master/default face uploaded by admin_
 
 ## User Portal
 
-Register & Login
+_Register & Login
 
 Add face (must match master data)
 
@@ -50,11 +50,11 @@ Apply for leave
 
 Update personal information
 
-Download attendance (PDF/CSV)
+Download attendance (PDF/CSV)_
 
 ## Admin Panel (Jazzmin Dashboard)
 
-Upload master data (student/faculty records)
+_Upload master data (student/faculty records)
 
 Approve or reject user registration
 
@@ -66,7 +66,7 @@ Manage face entries
 
 View attendance analytics
 
-Export attendance reports
+Export attendance reports_
 
 
 ### Installation & Setup (Step-by-Step)
@@ -150,6 +150,7 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
