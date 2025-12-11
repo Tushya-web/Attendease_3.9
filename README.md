@@ -88,3 +88,4 @@ AttendEase/
 ### Author
 Tushya R. Parmar
 AI Engineer in Progress • Computer Vision Enthusiast
+
