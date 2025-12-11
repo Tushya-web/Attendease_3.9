@@ -130,19 +130,17 @@ python manage.py runserver
 > │   ├── utils/                # Helper scripts
 >
 > │   └── urls.py
->
+
 > │
->
+
 > ├── media/                    # User uploaded images
->
+
 > │   ├── master_faces/
->
+
 > │   └── user_faces/
->
+
 > │
->
 > ├── requirements.txt
-> 
 > └── README.md
 
 ### Author
@@ -150,6 +148,7 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
