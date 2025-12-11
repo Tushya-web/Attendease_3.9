@@ -1,7 +1,8 @@
 
 <img width="500" height="127" alt="AttendEase" src="https://github.com/user-attachments/assets/18f6c229-4bda-4c21-b791-4ee18e2ccdc3" />
+
 # AttendEase – AI Powered Face Recognition Attendance System
-## (Django + DeepFace/FaceNet + Jazzmin + HTML/CSS/JS)
+> (Django + DeepFace/FaceNet + Jazzmin + HTML/CSS/JS)
 
 ### AttendEase is a full-stack, intelligent attendance automation system powered by Django, DeepFace/FaceNet, OpenCV, and a clean Jazzmin-powered admin dashboard.
 It features secure face verification, user registration, attendance tracking, leave management, and admin control.
@@ -119,3 +120,4 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
