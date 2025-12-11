@@ -114,12 +114,40 @@ python manage.py runserver
 
 [![DeepFace](https://img.shields.io/badge/DeepFace-Documentation-orange)](https://serengil.github.io/deepface/)
 
+## Project Structure
+```
+AttendEase/
+│
+├── attendease/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+├── attendance_app/
+│   ├── models.py
+│   ├── views.py
+│   ├── detectors/
+│   │   ├── facenet.py
+│   │   └── liveness.py
+│   ├── templates/
+│   ├── static/
+│   ├── utils/
+│   └── urls.py
+│
+├── media/
+│   ├── master_faces/
+│   └── user_faces/
+│
+├── requirements.txt
+└── README.md
+```
 
 ### Author
 
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
