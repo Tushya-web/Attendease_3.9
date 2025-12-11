@@ -1,5 +1,5 @@
 
-<img width="500" height="127" alt="AttendEase" src="https://github.com/user-attachments/assets/18f6c229-4bda-4c21-b791-4ee18e2ccdc3" />
+<center><img width="500" height="127" alt="AttendEase" src="https://github.com/user-attachments/assets/18f6c229-4bda-4c21-b791-4ee18e2ccdc3" /></center>
 
 # AttendEase – AI Powered Face Recognition Attendance System
 > (Django + DeepFace/FaceNet + Jazzmin + HTML/CSS/JS)
@@ -120,4 +120,5 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
