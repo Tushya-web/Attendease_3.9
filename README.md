@@ -10,10 +10,57 @@ It features secure face verification, user registration, attendance tracking, le
 https://github.com/user-attachments/assets/03b4130c-6bcc-4957-811b-0bff7711e6cb
 
 ## 📘 Technology Documentation which used
-[![Django Docs](https://img.shields.io/badge/Django-Documentation-0C4B33?style=for-the-badge)](https://docs.djangoproject.com/)
-[![OpenCV Docs](https://img.shields.io/badge/OpenCV-Documentation-5C3EE8?style=for-the-badge)](https://docs.opencv.org/)
-[![DeepFace Docs](https://img.shields.io/badge/DeepFace-Documentation-F9A825?style=for-the-badge)](https://serengil.github.io/deepface/)
-[![FaceNet Paper](https://img.shields.io/badge/FaceNet-Research%20Paper-1976D2?style=for-the-badge)](https://arxiv.org/abs/1503.03832)
+<!-- Tech Stack Badges -->
+<p align="left">
+
+<!-- Python -->
+<a href="https://www.python.org/" target="_blank">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Badge"/>
+</a>
+
+<!-- Django -->
+<a href="https://www.djangoproject.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Django-4.x-0C4B33?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/>
+</a>
+
+<!-- DeepFace -->
+<a href="https://serengil.github.io/deepface/" target="_blank">
+  <img src="https://img.shields.io/badge/DeepFace-FaceNet-F9A825?style=for-the-badge&logo=google&logoColor=white" alt="DeepFace Badge"/>
+</a>
+
+<!-- FaceNet -->
+<a href="https://arxiv.org/abs/1503.03832" target="_blank">
+  <img src="https://img.shields.io/badge/FaceNet-Embedding%20Model-1976D2?style=for-the-badge&logo=google&logoColor=white" alt="FaceNet Badge"/>
+</a>
+
+<!-- OpenCV -->
+<a href="https://opencv.org/" target="_blank">
+  <img src="https://img.shields.io/badge/OpenCV-Computer%20Vision-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV Badge"/>
+</a>
+
+<!-- Jazzmin -->
+<a href="https://django-jazzmin.readthedocs.io/" target="_blank">
+  <img src="https://img.shields.io/badge/Jazzmin-Admin%20Theme-8A2BE2?style=for-the-badge&logo=django&logoColor=white" alt="Jazzmin Badge"/>
+</a>
+
+<!-- HTML -->
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+  <img src="https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML Badge"/>
+</a>
+
+<!-- CSS -->
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
+  <img src="https://img.shields.io/badge/CSS3-Styles-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS Badge"/>
+</a>
+
+<!-- JavaScript -->
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+  <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript Badge"/>
+</a>
+
+</p>
+
+
 
 ## Project Information
 
@@ -150,6 +197,7 @@ AttendEase/
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
