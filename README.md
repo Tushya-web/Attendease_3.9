@@ -110,28 +110,25 @@ python manage.py runserver
 
 ## Project Structure
 > AttendEase/
->
-> │
->
+
 > ├── attendease/               # Core Django project
->
+
 > ├── attendance_app/           # Main features
->
+
 > │   ├── models.py             # Database models
->
+
 > │   ├── views.py              # Logic & AI processing
->
+
 > │   ├── detectors/            # FaceNet + Liveness
->
+
 > │   ├── static/               # CSS, JS
->
+
 > │   ├── templates/            # HTML pages
->
+
 > │   ├── utils/                # Helper scripts
->
+
 > │   └── urls.py
 
-> │
 
 > ├── media/                    # User uploaded images
 
@@ -139,8 +136,8 @@ python manage.py runserver
 
 > │   └── user_faces/
 
-> │
 > ├── requirements.txt
+
 > └── README.md
 
 ### Author
@@ -148,6 +145,7 @@ python manage.py runserver
 Tushya R. Parmar
 
 AI and Computer Vision Enthusiast
+
 
 
 
