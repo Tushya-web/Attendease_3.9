@@ -20,7 +20,6 @@ It features secure face verification, user registration, attendance tracking, le
 - [Author](#author)
 
 
-
 ## 📘 Technology Documentation which used
 <!-- Tech Stack Badges -->
 <p align="left">
@@ -73,7 +72,7 @@ It features secure face verification, user registration, attendance tracking, le
 </p>
 
 ## 🎥 Demo
-![AttendEase Demo](https://github.com/user-attachments/assets/03b4130c-6bcc-4957-811b-0bff7711e6cb)
+https://github.com/user-attachments/assets/03b4130c-6bcc-4957-811b-0bff7711e6cb 
 
 ## ⭐ Features
 - Django-based full-stack architecture  
@@ -197,6 +196,7 @@ AI and Computer Vision Enthusiast
 ![GitHub Repo stars](https://img.shields.io/github/stars/Tushya-web/Attendease_3.9?style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/Tushya-web/Attendease_3.9?style=flat)
 ![GitHub issues](https://img.shields.io/github/issues/Tushya-web/Attendease_3.9?style=flat)
+
 
 
 
